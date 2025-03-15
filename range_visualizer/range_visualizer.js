@@ -74,8 +74,6 @@ class Sprite {
     }
     
     calculateHits() {
-        // TODO: I ran out of flight wifi, so this is an off the cuff approximation
-        // I think the area of a circular section is equal to the area of a cylinder with radius of the sphere
         let cylinderHeight = (1-Math.cos(radians(camera.fov/2)));
         let circleCircumference = 2*Math.PI;
         let sphericalCircleAreaApproximation = cylinderHeight*circleCircumference;
@@ -86,7 +84,7 @@ class Sprite {
         // Velodyne HDL-64E produces 1.3 million points per second. Lets assume Hammerhead only runs ar 5hz
         const five_hz_points_per_frame = 1.3e6/5;
         const returns_for_1m2_at_1m = five_hz_points_per_frame/6;
-        return five_hz_points_per_frame*this.area/(this.range*this.range);
+        return returns_for_1m2_at_1m*this.area/(this.range*this.range);
     }
 }
 
@@ -186,7 +184,7 @@ function createRangeErrorBoundLabel(baseX, baseY) {
 }
 
 function updateRangeBounds() {
-    rangeErrorBoundLabel.html("Error Bounds SOMEONE PLEASE CHECK THIS:<br>" +
+    rangeErrorBoundLabel.html("Error Bounds:<br>" +
         "5m: " + calculateRangeErrorBound(5).toPrecision(2) + " m<br>" +
         "10m: " + calculateRangeErrorBound(10).toPrecision(2) + " m<br>" +
         "20m: " + calculateRangeErrorBound(20).toFixed(2) + " m<br>" +
