@@ -215,13 +215,13 @@ function setup() {
     personSprite =  new Sprite(loadImage('person.png'), 5, 1, 2, .75, "Person");
     sharkSprite = new Sprite(loadImage('shark.png'), 15,-1, 5, 1.5, "Hammerhead Shark");
 
-    createFOVSelector(40);
-    createBaselineSelector(70);
-    createImageSizeSelector(100);
-    createBoxRangeSelector(400, 40);
-    createPersonRangeSelector(400, 70);
-    createSharkRangeSelector(400, 100);
-    createRangeErrorBoundLabel(700, -5);
+    createFOVSelector(140);
+    createBaselineSelector(170);
+    createImageSizeSelector(200);
+    createBoxRangeSelector(400, 140);
+    createPersonRangeSelector(400, 170);
+    createSharkRangeSelector(400, 200);
+    createRangeErrorBoundLabel(700, 95);
 
 }
 
