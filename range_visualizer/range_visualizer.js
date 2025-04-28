@@ -163,6 +163,19 @@ function createImageSizeSelector(baseY) {
     });
 }
 
+function createBoxSizeSelector(baseX, baseY) {
+    boxSizeSlider = createSlider(.1, 5, boxSprite.height, .1);
+    boxSizeLabel = createP("Box Height: " + boxSprite.height + "m");
+    boxSizeSlider.position(baseX, baseY);
+    boxSizeLabel.position(baseX + 140, baseY-15);
+
+    boxSizeSlider.input(function() {
+        boxSprite.height = boxSizeSlider.value();
+        boxSprite.area = Math.pow(boxSizeSlider.value(), 2);
+        boxSizeLabel.html("Box Height: " + boxSprite.height.toFixed(2) + "m");
+    });
+}
+
 function createBoxRangeSelector(baseX, baseY) {
     boxRangeSlider = createSlider(.1, 25, Math.sqrt(boxSprite.range), .1);
     boxRangeLabel = createP("Box Range: " + boxSprite.range + "m");
@@ -244,16 +257,17 @@ function updateScale() {
 function setup() {
     createCanvas(WIDTH, HEIGHT);
 
-    boxSprite = new Sprite(loadImage('box.png'), 5, 0, .5, .01, "Box (10cm x 10cm)");
+    boxSprite = new Sprite(loadImage('box.png'), 5, 0, .5, .25, "Box");
     personSprite =  new Sprite(loadImage('person.png'), 15, 1, 2, .75, "Person");
     sedanSprite = new Sprite(loadImage('sedan-rear.png'), 30,-1, 1.75, 2.5, "Sedan");
 
     createFOVSelector(140);
     createBaselineSelector(170);
     createImageSizeSelector(200);
-    createBoxRangeSelector(400, 140);
-    createPersonRangeSelector(400, 170);
-    createSedanRangeSelector(400, 200);
+    createBoxSizeSelector(400, 140);
+    createBoxRangeSelector(400, 170);
+    createPersonRangeSelector(400, 200);
+    createSedanRangeSelector(400, 230);
     createRangeErrorBoundLabel(700, 95);
 
 }
