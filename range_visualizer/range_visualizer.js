@@ -164,15 +164,15 @@ function createImageSizeSelector(baseY) {
 }
 
 function createBoxSizeSelector(baseX, baseY) {
-    boxSizeSlider = createSlider(.1, 5, boxSprite.height, .1);
-    boxSizeLabel = createP("Box Height: " + boxSprite.height + "m");
+    boxSizeSlider = createSlider(.1, 5, boxSprite.height, .001);
+    boxSizeLabel = createP("Box Height: " + boxSprite.height.toFixed(3) + "m");
     boxSizeSlider.position(baseX, baseY);
     boxSizeLabel.position(baseX + 140, baseY-15);
 
     boxSizeSlider.input(function() {
         boxSprite.height = boxSizeSlider.value();
         boxSprite.area = Math.pow(boxSizeSlider.value(), 2);
-        boxSizeLabel.html("Box Height: " + boxSprite.height.toFixed(2) + "m");
+        boxSizeLabel.html("Box Height: " + boxSprite.height.toFixed(3) + "m");
     });
 }
 
